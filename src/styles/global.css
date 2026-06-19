@@ -6,7 +6,7 @@
   --bg: #ffffff;
   --accent: oklch(0.55 0.11 256);
 
-  /* warm grey text ramp (light → dark) */
+  /* warm grey text ramp — contrast against bg increases from 1 → 8 */
   --grey-1: #b3ada3;
   --grey-2: #bdb7ad;
   --grey-3: #a39d92;
@@ -19,8 +19,44 @@
   --line: #ece9e3;         /* hairline borders */
   --hover-row: #f6f5f2;    /* project row hover fill */
 
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --surface: #ffffff;      /* input / card surface */
+  --selection-text: #ffffff;
+
+  --btn-bg: #14110f;
+  --btn-text: #ffffff;
+  --btn-bg-hover: #000000;
+
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Hanken Grotesk', sans-serif;
+}
+
+/* Dark theme — same tokens, flipped values. Applied via data-theme on <html>. */
+:root[data-theme='dark'] {
+  --ink: #f0ece4;
+  --bg: #141210;
+  --accent: oklch(0.72 0.13 256);
+
+  /* ramp re-balanced so 8 stays the most prominent on a dark bg */
+  --grey-1: #797268;
+  --grey-2: #847d72;
+  --grey-3: #938c80;
+  --grey-4: #a29a8d;
+  --grey-5: #b1a99b;
+  --grey-6: #c0b8aa;
+  --grey-7: #cfc7b9;
+  --grey-8: #ded6c8;
+
+  --line: #2c2823;
+  --hover-row: #1e1b17;
+
+  --header-bg: rgba(20, 18, 16, 0.82);
+  --surface: #1c1916;
+  --selection-text: #141210;
+
+  --btn-bg: #f0ece4;
+  --btn-text: #141210;
+  --btn-bg-hover: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,9 +68,10 @@ body {
   text-rendering: optimizeLegibility;
   color: var(--ink);
   font-family: var(--sans);
+  transition: background-color .3s ease, color .3s ease;
 }
 
-::selection { background: var(--ink); color: #fff; }
+::selection { background: var(--ink); color: var(--selection-text); }
 
 /* Reveal animates transform only — opacity is never touched, so content
    is unconditionally visible even if the animation never plays/finishes. */
@@ -70,7 +107,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 22px clamp(24px, 5vw, 72px);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--header-bg);
   backdrop-filter: saturate(1.4) blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -118,6 +155,29 @@ body {
   border-radius: 50%;
   background: var(--accent);
 }
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 4px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--grey-5);
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--grey-4); }
+.theme-toggle svg { width: 15px; height: 15px; display: block; }
+/* Show the icon for the theme you'd switch TO */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme='dark'] .theme-toggle .icon-sun { display: block; }
+:root[data-theme='dark'] .theme-toggle .icon-moon { display: none; }
 
 /* ── Footer ────────────────────────────────────────────────────────────── */
 .footer {
@@ -180,8 +240,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: var(--ink);
-  color: #fff;
+  background: var(--btn-bg);
+  color: var(--btn-text);
   border: none;
   cursor: pointer;
   padding: 15px 24px;
@@ -192,7 +252,7 @@ body {
   font-weight: 500;
   transition: transform .25s ease, background .25s ease;
 }
-.btn-primary:hover { transform: translateX(3px); background: #000; }
+.btn-primary:hover { transform: translateX(3px); background: var(--btn-bg-hover); }
 .btn-primary .arrow { font-family: var(--mono); }
 .home-availability {
   font-family: var(--mono);
@@ -388,7 +448,7 @@ body {
   font-family: var(--sans);
   font-size: 16px;
   color: var(--ink);
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 2px;
   padding: 12px 14px;
