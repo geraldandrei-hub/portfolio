@@ -65,7 +65,7 @@ export const projects = [
 // Framed as education + self-learning, which is right for a student portfolio.
 // Replace [Your University] with your school's name.
 export const experience = [
-  { role: 'BS Computer Science — Cybersecurity Track', company: '[Your University]', years: '2023 — Present' },
+  { role: 'BS Computer Science — Cybersecurity Track', company: 'UM Tagum College', years: '2023 — Present' },
   { role: 'Self-directed learning', company: 'Flutter · Python · Machine Learning', years: 'Ongoing' },
 ];
 
