@@ -1,0 +1,9 @@
+---
+import { site } from '../data/portfolio';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <span>© {year} {site.name}</span>
+  <span>{site.location} · {site.timezone}</span>
+</footer>

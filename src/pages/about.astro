@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { experience } from '../data/portfolio';
+---
+
+<Layout title="About — Alex Mercer">
+  <section class="section">
+    <p class="eyebrow about-eyebrow">About</p>
+    <div class="about-lede">
+      <p class="about-lede-headline">
+        I'm a third-year Computer Science student on the cybersecurity track, happiest
+        when I'm building something — whether that's a Flutter app or a simulation of an
+        attack and how to defend against it.
+      </p>
+      <p class="about-lede-body">
+        My coursework leans into machine learning and modeling, and my projects wander
+        between app development and security. I'm still figuring out exactly where I'll
+        land — developer or security specialist — so for now I'm learning broadly,
+        building real things, and writing down what I learn along the way.
+      </p>
+    </div>
+
+    <div class="about-cols">
+      <div>
+        <p class="label-mono">Experience</p>
+        {experience.map((e) => (
+          <div class="exp-row">
+            <span>
+              <span class="exp-role">{e.role}</span>
+              <span class="exp-company">{e.company}</span>
+            </span>
+            <span class="exp-years">{e.years}</span>
+          </div>
+        ))}
+      </div>
+      <div>
+        <p class="label-mono">Principles</p>
+        <p class="principles">
+          Learn by building.<br />
+          Understand it, don't just copy it.<br />
+          Security is everyone's job.<br />
+          Stay curious, ship anyway.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

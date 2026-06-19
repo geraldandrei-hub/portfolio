@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/portfolio';
+---
+
+<Layout>
+  <section class="section">
+    <p class="eyebrow home-eyebrow">{site.role} &nbsp;·&nbsp; {site.location}</p>
+    <h1 class="home-title">I build software — and I'm learning how to keep it secure.</h1>
+    <p class="home-intro">
+      Third-year Computer Science student on the cybersecurity track, based in the Philippines.
+      I build Flutter and Python projects, and I'm exploring the line between software
+      development and security.
+    </p>
+
+    <div class="home-cta-row">
+      <a href="/work" class="btn-primary">
+        See selected work
+        <span class="arrow">&rarr;</span>
+      </a>
+      <span class="home-availability">{site.availability}</span>
+    </div>
+
+    <div class="stat-grid">
+      <div>
+        <p class="label-mono">Focus</p>
+        <p class="stat-body">Cybersecurity<br />Machine Learning<br />Software Development</p>
+      </div>
+      <div>
+        <p class="label-mono">Stack</p>
+        <p class="stat-body">Python · Java<br />JavaScript · Dart<br />Flutter</p>
+      </div>
+      <div>
+        <p class="label-mono">Now</p>
+        <p class="stat-body">Modeling brute-force attacks and building Flutter apps for coursework.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

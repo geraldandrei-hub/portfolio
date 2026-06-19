@@ -1,0 +1,26 @@
+---
+import { nav, site } from '../data/portfolio';
+
+// The current path, used to highlight the active nav item.
+// Astro.url.pathname is e.g. "/", "/work", "/about/".
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="header">
+  <a href="/" class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">{site.name.toLowerCase()}</span>
+  </a>
+  <nav class="nav">
+    {nav.map((n) => {
+      const target = n.href.replace(/\/$/, '') || '/';
+      const active = path === target;
+      return (
+        <a href={n.href} class={`nav-link${active ? ' is-active' : ''}`}>
+          {active && <span class="nav-dot"></span>}
+          {n.label}
+        </a>
+      );
+    })}
+  </nav>
+</header>
