@@ -73,13 +73,6 @@ body {
 
 ::selection { background: var(--ink); color: var(--selection-text); }
 
-/* Reveal animates transform only — opacity is never touched, so content
-   is unconditionally visible even if the animation never plays/finishes. */
-@keyframes rise {
-  from { transform: translateY(20px); }
-  to   { transform: translateY(0); }
-}
-
 /* ── App shell ─────────────────────────────────────────────────────────── */
 .app {
   min-height: 100vh;
@@ -96,7 +89,32 @@ body {
   padding: clamp(40px, 7vw, 96px) clamp(24px, 5vw, 72px);
 }
 
-.section { animation: rise .7s cubic-bezier(.2, .7, .2, 1); }
+/* ── Scroll reveal ─────────────────────────────────────────────────────────
+   The page entrance is carried entirely by [data-reveal] (below) — there's no
+   blanket .section animation. The hidden start state is scoped to
+   html.reveal-ready, a class added pre-paint only when prefers-reduced-motion is
+   "no-preference" (see Layout). So no-JS and reduced-motion visitors never see a
+   hidden [data-reveal] — content is visible by default. --reveal-delay lets a
+   group stagger in. */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity .6s cubic-bezier(.2, .7, .2, 1),
+    transform .6s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+html.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* When printing, IntersectionObserver never reveals off-screen elements, so
+   force every [data-reveal] visible — otherwise below-the-fold content prints
+   blank (e.g. "Save as PDF"). */
+@media print {
+  html.reveal-ready [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
 
 /* ── Header ────────────────────────────────────────────────────────────── */
 .header {
