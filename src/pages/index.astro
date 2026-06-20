@@ -5,15 +5,15 @@ import { site } from '../data/portfolio';
 
 <Layout>
   <section class="section">
-    <p class="eyebrow home-eyebrow">{site.role} &nbsp;·&nbsp; {site.location}</p>
-    <h1 class="home-title">I build software and I'm learning how to keep it secure.</h1>
-    <p class="home-intro">
+    <p class="eyebrow home-eyebrow" data-reveal>{site.role} &nbsp;·&nbsp; {site.location}</p>
+    <h1 class="home-title" data-reveal style="--reveal-delay:70ms">I build software and I'm learning how to keep it secure.</h1>
+    <p class="home-intro" data-reveal style="--reveal-delay:140ms">
       Third-year Computer Science student on the cybersecurity track, based in the Philippines.
       I build Flutter and Python projects, and I'm exploring the line between software
       development and security.
     </p>
 
-    <div class="home-cta-row">
+    <div class="home-cta-row" data-reveal style="--reveal-delay:210ms">
       <a href="/work" class="btn-primary">
         See selected work
         <span class="arrow">&rarr;</span>
@@ -22,15 +22,15 @@ import { site } from '../data/portfolio';
     </div>
 
     <div class="stat-grid">
-      <div>
+      <div data-reveal>
         <p class="label-mono">Focus</p>
         <p class="stat-body">Cybersecurity<br />Machine Learning<br />Software Development</p>
       </div>
-      <div>
+      <div data-reveal style="--reveal-delay:90ms">
         <p class="label-mono">Stack</p>
         <p class="stat-body">Python · Java<br />JavaScript · Dart<br />Flutter</p>
       </div>
-      <div>
+      <div data-reveal style="--reveal-delay:180ms">
         <p class="label-mono">Now</p>
         <p class="stat-body">Modeling brute-force attacks and building Flutter apps for coursework.</p>
       </div>

@@ -5,14 +5,14 @@ import { experience } from '../data/portfolio';
 
 <Layout title="About — Gerald Villa">
   <section class="section">
-    <p class="eyebrow about-eyebrow">About</p>
+    <p class="eyebrow about-eyebrow" data-reveal>About</p>
     <div class="about-lede">
-      <p class="about-lede-headline">
+      <p class="about-lede-headline" data-reveal style="--reveal-delay:70ms">
         I'm a third-year Computer Science student on the cybersecurity track, happiest
         when I'm building something whether that's a Flutter app or a simulation of an
         attack and how to defend against it.
       </p>
-      <p class="about-lede-body">
+      <p class="about-lede-body" data-reveal style="--reveal-delay:140ms">
         My coursework leans into machine learning and modeling, and my projects wander
         between app development and security. I'm still figuring out exactly where I'll
         land developer or security specialist  so for now I'm learning broadly,
@@ -21,7 +21,7 @@ import { experience } from '../data/portfolio';
     </div>
 
     <div class="about-cols">
-      <div>
+      <div data-reveal>
         <p class="label-mono">Experience</p>
         {experience.map((e) => (
           <div class="exp-row">
@@ -33,7 +33,7 @@ import { experience } from '../data/portfolio';
           </div>
         ))}
       </div>
-      <div>
+      <div data-reveal style="--reveal-delay:90ms">
         <p class="label-mono">Principles</p>
         <p class="principles">
           Learn by building.<br />

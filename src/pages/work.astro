@@ -5,12 +5,12 @@ import { projects } from '../data/portfolio';
 
 <Layout title="Work — Gerald Villa">
   <section class="section">
-    <p class="eyebrow work-eyebrow">Projects</p>
-    <h2 class="work-title">A few things I've built.</h2>
+    <p class="eyebrow work-eyebrow" data-reveal>Projects</p>
+    <h2 class="work-title" data-reveal style="--reveal-delay:70ms">A few things I've built.</h2>
 
     <div class="work-list">
-      {projects.map((p) => (
-        <a href={p.href} target="_blank" rel="noopener noreferrer" class="project">
+      {projects.map((p, i) => (
+        <a href={p.href} target="_blank" rel="noopener noreferrer" class="project" data-reveal style={`--reveal-delay:${i * 60}ms`}>
           <span class="project-no">{p.no}</span>
           <span class="project-shot" style={`background:${p.tint}`}>
             <span>{p.shot}</span>
